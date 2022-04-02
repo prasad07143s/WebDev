@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: poppins, sans-serif;
+        }
+
+        .container {
+            height: 500px;
+            width: 500px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px black;
+            padding: 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            font-variant: small-caps;
+        }
+
+        .details {
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .colour1 {
+            box-shadow: 2px 2px 5px black;
+            padding: 10px;
+        }
+
+        .colour2 {
+            box-shadow: 2px 2px 5px black;
+            margin-top: 40px;
+            padding: 10px;
+        }
+
+        .input-box {
+            width: 100%;
+        }
+
+        .input-box input {
+            width: 100%;
+            outline: none;
+            border: none;
+        }
+
+        .input-box span {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="container">
+        <div class="title">Gradient Generator</div>
+        <div class="details">
+            <div class="colour1">
+                <div class="input-box">
+                    <span>Red : </span>
+                    <span id="red1">0</span>
+                    <input max="255" id="r1" onchange="fun()" value="0" type="range">
+                </div>
+                <div class="input-box">
+                    <span>Green : </span>
+                    <span id="green1">0</span>
+                    <input max="255" id="g1" onchange="fun()" value="0" type="range">
+                </div>
+                <div class="input-box">
+                    <span>Blue : </span>
+                    <span id="blue1">0</span>
+                    <input max="255" id="b1" onchange="fun()" value="0" type="range">
+                </div>
+            </div>
+            <div class="colour2">
+                <div class="input-box">
+                    <span>Red : </span>
+                    <span id="red2">0</span>
+                    <input max="255" id="r2" onchange="fun()" value="0" type="range">
+                </div>
+                <div class="input-box">
+                    <span>Green : </span>
+                    <span id="green2">0</span>
+                    <input max="255" id="g2" onchange="fun()" value="0" type="range">
+                </div>
+                <div class="input-box">
+                    <span>Blue : </span>
+                    <span id="blue2">0</span>
+                    <input max="255" id="b2" onchange="fun()" value="0" type="range">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function fun() {
+            var r1 = document.getElementById("r1").value;
+            var g1 = document.getElementById("g1").value;
+            var b1 = document.getElementById("b1").value;
+            var r2 = document.getElementById("r2").value;
+            var g2 = document.getElementById("g2").value;
+            var b2 = document.getElementById("b2").value;
+
+            document.getElementById("red1").innerHTML = r1;
+            document.getElementById("green1").innerHTML = g1;
+            document.getElementById("blue1").innerHTML = b1;
+            document.getElementById("red2").innerHTML = r2;
+            document.getElementById("green2").innerHTML = g2;
+            document.getElementById("blue2").innerHTML = b2;
+
+            document.getElementById("body").style.background = "linear-gradient(45deg, rgb(" + r1 + ", " + g1 + ", " + b1 + "), rgb(" + r2 + ", " + g2 + ", " + b2 + "))";
+        }
+    </script>
+</body>
+
+</html>

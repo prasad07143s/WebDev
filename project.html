@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100%;
+            border: 2px solid black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container .bgimage {
+            background-image: url(diagram1.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 900px 420px;
+            height: 420px;
+            width: 1000px;
+            position: absolute;
+            left: 50%;
+            top: 65%;
+            transform: translate(-50%, -50%);
+            z-index: -2;
+        }
+
+        .container .bulb {
+            height: 36px;
+            width: 36px;
+            border: 2px solid black;
+            position: absolute;
+            top: 505px;
+            left: 405px;
+            border-radius: 50%;
+            animation: glow 4s linear infinite;
+            background: radial-gradient(circle, yellow, red);
+            animation-play-state: paused;
+        }
+
+        @keyframes glow {
+            0% {
+                background: transparent;
+            }
+
+            25% {
+                background: yellow;
+            }
+
+            50% {
+                background: orange;
+            }
+
+            75% {
+                background: orangered;
+            }
+
+            100% {
+                background: linear-gradient(circle, yellow, red);
+            }
+        }
+
+        .container .rod {
+            height: 100px;
+            width: 32px;
+            border: 2px solid transparent;
+            position: absolute;
+            top: 200px;
+            left: 456px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .container .rod:hover~.bulb {
+            border: 18px solid yellow;
+            box-shadow: 2px 2px 5px black;
+        }
+
+        .container .sun {
+            height: 64px;
+            width: 64px;
+            background: linear-gradient(45deg, red, yellow);
+            border-radius: 50%;
+            margin: 40px;
+            cursor: pointer;
+        }
+
+        .container .sun .rays {
+            border-bottom: 500px solid rgb(255, 255, 0, 0.7);
+            border-left: 45px solid transparent;
+            border-right: 45px solid transparent;
+            transform: rotate(-45deg);
+            position: relative;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            left: -15px;
+            top: 32px;
+            z-index: -1;
+            transform-origin: top;
+            animation: rays 4s ease-in-out infinite;
+            animation-play-state: paused;
+        }
+
+        .container .sun:hover .rays {
+            animation-play-state: running;
+        }
+
+        .container .sun:hover~.bulb {
+            animation-play-state: running;
+        }
+
+        .container .sun:hover~.panel {
+            animation-play-state: running;
+        }
+
+        @keyframes rays {
+            0% {
+                transform: rotate(-45deg);
+            }
+
+            50% {
+                transform: rotate(-55deg);
+                border-bottom: 600px solid rgb(255, 255, 0, 0.7);
+            }
+
+            100% {
+                transform: rotate(-65deg);
+                border-bottom: 800px solid rgb(255, 255, 0, 0.7);
+            }
+        }
+
+        .container .panel {
+            height: 110px;
+            width: 426px;
+            border: 10px solid silver;
+            outline: 3px solid black;
+            position: absolute;
+            left: 401px;
+            transform: translate(-50%, -50%);
+            top: 335px;
+            background: #00366d;
+            transform-origin: center;
+            animation: rot 2s linear infinite;
+            animation-play-state: paused;
+            z-index: -2;
+            animation: rot 4s linear infinite;
+            animation-play-state: paused;
+        }
+
+        @keyframes rot {
+            0% {
+                transform: skew(0) scale(1);
+            }
+
+            100% {
+                transform: skew(30deg) scale(1.1);
+            }
+        }
+
+        .container .panel span {
+            height: 90px;
+            border-left: 4px double #00366d;
+            background: white;
+            position: absolute;
+        }
+
+        .container .panel span:nth-child(1) {
+            left: 20px;
+        }
+
+        .container .panel span:nth-child(2) {
+            left: 40px;
+        }
+
+        .container .panel span:nth-child(3) {
+            left: 60px;
+        }
+
+        .container .panel span:nth-child(4) {
+            left: 80px;
+        }
+
+        .container .panel span:nth-child(5) {
+            left: 100px;
+        }
+
+        .container .panel span:nth-child(6) {
+            left: 120px;
+        }
+
+        .container .panel span:nth-child(7) {
+            left: 140px;
+        }
+
+        .container .panel span:nth-child(8) {
+            left: 160px;
+        }
+
+        .container .panel span:nth-child(9) {
+            left: 180px;
+        }
+
+        .container .panel span:nth-child(10) {
+            left: 200px;
+        }
+
+        .container .panel span:nth-child(11) {
+            left: 220px;
+        }
+
+        .container .panel span:nth-child(18) {
+            left: 240px;
+        }
+
+        .container .panel span:nth-child(19) {
+            left: 260px;
+        }
+
+        .container .panel span:nth-child(21) {
+            left: 280px;
+        }
+
+        .container .panel span:nth-child(22) {
+            left: 300px;
+        }
+
+        .container .panel span:nth-child(23) {
+            left: 320px;
+        }
+
+        .container .panel span:nth-child(24) {
+            left: 340px;
+        }
+
+        .container .panel span:nth-child(25) {
+            left: 360px;
+        }
+
+        .container .panel span:nth-child(26) {
+            left: 380px;
+        }
+
+        .container .panel span:nth-child(27) {
+            left: 400px;
+        }
+
+        .container .panel span:nth-child(28) {
+            left: 200px;
+            top: -200px;
+            transform: rotate(90deg);
+            height: 405px;
+        }
+
+
+        .container .panel span:nth-child(17) {
+            left: 200px;
+            top: -180px;
+            transform: rotate(90deg);
+            height: 405px;
+        }
+
+        .container .panel span:nth-child(12) {
+            left: 200px;
+            top: -160px;
+            transform: rotate(90deg);
+            height: 405px;
+        }
+
+        .container .panel span:nth-child(13) {
+            left: 200px;
+            top: -140px;
+            transform: rotate(90deg);
+            height: 405px;
+        }
+
+        .container .panel span:nth-child(14) {
+            left: 200px;
+            top: -120px;
+            transform: rotate(90deg);
+            height: 405px;
+        }
+
+
+
+        .container .fan label {
+            height: 10px;
+            width: 10px;
+            background: black;
+            position: absolute;
+            left: 280px;
+            top: 230px;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            transform-origin: center;
+            animation: rotor 2s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .container .fan label::after {
+            content: '';
+            height: 40px;
+            width: 40px;
+            background: transparent;
+            border: 2px solid black;
+            border-radius: 50%;
+            background: red;
+            position: absolute;
+            left: -16.5px;
+            top: -16.5px;
+            transform-origin: center;
+        }
+
+
+        @keyframes rotor {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .container .fan label span {
+            height: 0px;
+            width: 40px;
+            background: blue;
+            border: 2px solid black;
+            z-index: -1;
+            border-radius: 100% 0% 100% 30%;
+            position: absolute;
+            transform-origin: top;
+        }
+
+        .container .fan label span:nth-child(1) {
+            transform: rotate(100deg);
+            top: -15px;
+            left: -10px;
+        }
+
+        .container .fan label span:nth-child(2) {
+            transform: rotate(220deg);
+            left: px;
+            top: 16px;
+        }
+
+        .container .fan label span:nth-child(3) {
+            transform: rotate(-16deg);
+            top: 9px;
+            left: -32px;
+        }
+
+        .container .fan #inp {
+            appearance: none;
+            background: lime;
+            height: 55px;
+            width: 55px;
+            border-radius: 50%;
+            border: 2px solid black;
+            position: absolute;
+            left: 750px;
+            top: 35px;
+            z-index: 1;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .container .fan #inp:checked~label {
+            animation-play-state: running;
+        }
+
+        .container .fan #inp:checked~label span {
+            height: 60px;
+        }
+
+        .container .fan #inp:checked {
+            background: red;
+        }
+
+        .container #inp1 {
+            position: absolute;
+            left: 880px;
+            top: 35px;
+            appearance: none;
+            height: 55px;
+            width: 55px;
+            background: lime;
+            border: 2px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .container #inp2 {
+            position: absolute;
+            left: 1000px;
+            top: 35px;
+            appearance: none;
+            height: 55px;
+            width: 55px;
+            background: lime;
+            border: 2px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .container .gas {
+            height: 50px;
+            width: 10px;
+            border-radius: 50%;
+            background: rgb(0, 255, 0);
+            position: absolute;
+            left: 1010px;
+            top: 480px;
+            box-shadow: 2px 2px 10px rgb(0, 255, 0);
+            filter: blur(10px);
+            animation: gas 2s linear infinite;
+            animation-play-state: paused;
+            display: none;
+        }
+
+        @keyframes gas {
+            0% {}
+
+            50% {
+                top: 520px;
+            }
+
+            100% {
+                top: 560px;
+            }
+        }
+
+        .container #inp1:checked~.gas {
+            animation-play-state: running;
+            display: block;
+        }
+
+        .container #inp1:checked {
+            background: red;
+        }
+
+        .container .fuel {
+            height: 40px;
+            width: 30px;
+            position: absolute;
+            left: 1050px;
+            top: 450px;
+            background: rgb(0, 175, 0, 0.8);
+            border-radius: 50% 60% 50% 70%;
+            animation: flow 2s linear infinite;
+            animation-play-state: paused;
+            display: none;
+        }
+
+        @keyframes flow {
+            0% {}
+
+            50% {
+                top: 470px;
+            }
+
+            100% {
+                top: 500px;
+            }
+        }
+
+        .container #inp2:checked~.fuel {
+            animation-play-state: running;
+            display: block;
+        }
+
+        .container #inp2:checked {
+            background: red;
+        }
+
+        .container .btns span {
+            position: absolute;
+            left: 1000px;
+            top: 100px;
+            font-size: 16px;
+            font-family: poppins;
+            font-weight: 500;
+            color: black;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .container .btns span:nth-child(1) {
+            left: 756px;
+        }
+
+        .container .btns span:nth-child(2) {
+            left: 884px;
+        }
+
+        .container .btns span:nth-child(3) {
+            left: 1006px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bgimage"></div>
+        <div class="sun">
+            <div class="rays"></div>
+        </div>
+        <div class="rod"></div>
+        <div class="bulb"></div>
+        <div class="panel">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="fan">
+            <input type="checkbox" id="inp">
+            <label for="inp">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+        <input type="checkbox" id="inp1">
+        <input type="checkbox" id="inp2">
+        <div class="gas"></div>
+        <div class="fuel"></div>
+        <div class="btns">
+            <span>Force</span>
+            <span>Water</span>
+            <span>Plastic<br>Waste</span>
+        </div>
+    </div>
+</body>
+
+</html>

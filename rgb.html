@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background: #0099ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: poppins, sans-serif;
+        }
+
+        .container {
+            height: 400px;
+            width: 400px;
+            background: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 2px 2px 5px black;
+        }
+
+        .title {
+            font-size: 32px;
+            font-variant: small-caps;
+            text-align: center;
+        }
+
+        .details {
+            height: 300px;
+            padding: 20px;
+            box-shadow: 2px 2px 5px black;
+            margin-top: 10px;
+        }
+
+        .details .input-box {
+            line-height: 20px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .input-box span {
+            font-size: 16px;
+        }
+
+        .input-box input {
+            width: 90%;
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="container">
+        <div class="title">RGB Colour</div>
+        <div class="details">
+            <div class="input-box">
+                <span style="color: red;">Red : </span>
+                <span id="r1">0</span>
+                <input max="255" value="0" onchange="fun()" id="inp1" type="range">
+            </div>
+            <div class="input-box">
+                <span style="color: green;">Green : </span>
+                <span id="g1">0</span>
+                <input max="255" value="0" onchange="fun()" id="inp2" type="range">
+            </div>
+            <div class="input-box">
+                <span style="color: blue;">Blue : </span>
+                <span id="b1">0</span>
+                <input max="255" value="0" onchange="fun()" id="inp3" type="range">
+            </div>
+        </div>
+    </div>
+    <script>
+        function fun() {
+            var r = document.getElementById("inp1").value;
+            var g = document.getElementById("inp2").value;
+            var b = document.getElementById("inp3").value;
+            var colour = "rgb(" + r + ", " + g + ", " + b + ")";
+            document.getElementById("r1").innerHTML = r;
+            document.getElementById("g1").innerHTML = g;
+            document.getElementById("b1").innerHTML = b;
+            document.getElementById("body").style.backgroundColor = colour;
+        }
+    </script>
+</body>
+
+</html>

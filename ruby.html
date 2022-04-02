@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        .container {
+            height: 550px;
+            width: 550px;
+            border: 2px solid black;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0%;
+            bottom: 0%;
+            right: 0%;
+        }
+
+        .tube {
+            height: 120px;
+            width: 420px;
+            border: 2px solid black;
+            position: relative;
+            top: 180px;
+            left: 30px;
+            border-bottom-left-radius: 100px;
+            border-top-left-radius: 100px;
+            border-right: none;
+        }
+
+        .tube::after {
+            content: "";
+            height: 100px;
+            width: 15px;
+            border: 2px solid black;
+            position: absolute;
+            top: 116px;
+            left: 75px;
+            border-top: 2px solid white;
+            border-bottom: none;
+        }
+
+        .tube::before {
+            content: "";
+            height: 100px;
+            width: 15px;
+            border: 2px solid black;
+            position: absolute;
+            top: 116px;
+            left: 350px;
+            border-top: 2px solid white;
+            border-bottom: none;
+        }
+
+        .rod {
+            height: 35px;
+            width: 250px;
+            border: 2px solid black;
+            position: absolute;
+            top: 40.5px;
+            left: 80px;
+            background: linear-gradient(rgb(255, 0, 0.9), rgb(255, 0, 0, 0.5));
+        }
+
+        .rod::after {
+            content: "";
+            height: 30.5px;
+            width: 18px;
+            border: 2px solid black;
+            border-radius: 50%;
+            position: absolute;
+            left: -12px;
+            top: -2px;
+            z-index: 1;
+            background: linear-gradient(45deg, rgb(0, 0, 0), rgb(0, 0, 0, 0.1));
+            backdrop-filter: blur(100px);
+        }
+
+        .rod::before {
+            content: "";
+            height: 30.5px;
+            width: 18px;
+            border: 2px solid black;
+            border-radius: 50%;
+            position: absolute;
+            left: 239px;
+            top: -2px;
+            z-index: 1;
+            background: linear-gradient(45deg, rgb(255, 255, 255, 0.8), rgb(255, 255, 255, 0.1));
+            backdrop-filter: blur(100px);
+        }
+
+        .connectors {
+            height: 140px;
+            width: 100px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: -15px 0px 0 rgb(0, 0, 255, 0.4);
+            position: absolute;
+            z-index: 2;
+            left: 115px;
+            top: -2px;
+        }
+
+        .connectors::after {
+            content: "";
+            height: 140px;
+            width: 100px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: -15px 0px 0 rgb(0, 0, 255, 0.4);
+            position: absolute;
+            z-index: 2;
+            left: 180px;
+            top: 0px;
+        }
+
+        .rings {
+            height: 120px;
+            width: 100px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: -15px 0px 0 rgb(0, 0, 255, 0.4);
+            position: absolute;
+            z-index: 2;
+            left: 155px;
+            top: -2px;
+        }
+
+        .rings::before {
+            content: "";
+            height: 120px;
+            width: 100px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: -15px 0px 0 rgb(0, 0, 255, 0.4);
+            position: absolute;
+            z-index: 2;
+            left: 90px;
+            top: 0px;
+        }
+
+        .rings::after {
+            content: "";
+            height: 120px;
+            width: 100px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: -15px 0px 0 rgb(0, 0, 255, 0.4);
+            position: absolute;
+            z-index: 2;
+            left: 45px;
+            top: 0px;
+        }
+
+        .beam {
+            height: 3px;
+            width: 130px;
+            background: red;
+            position: absolute;
+            top: 55.5px;
+            left: 350px;
+        }
+
+        .beam::before {
+            content: "";
+            height: 3px;
+            width: 130px;
+            background: red;
+            position: absolute;
+            top: -8px;
+            left: 0px;
+        }
+
+        .beam::after {
+            content: "";
+            height: 3px;
+            width: 130px;
+            background: red;
+            position: absolute;
+            top: 8px;
+            left: 0px;
+        }
+
+        .power {
+            height: 60px;
+            width: 100px;
+            border: 2px solid black;
+            position: absolute;
+            top: 350px;
+            left: 215px;
+            box-shadow: 5px -5px 0 black;
+        }
+
+        .power::after {
+            content: "";
+            height: 60px;
+            width: 37px;
+            border: 2px solid black;
+            border-right: none;
+            border-top: none;
+            position: absolute;
+            left: -40px;
+            top: -33px;
+        }
+
+        .power::before {
+            content: "";
+            height: 60px;
+            width: 37px;
+            border: 2px solid black;
+            border-left: none;
+            border-top: none;
+            position: absolute;
+            left: 100px;
+            top: -33px;
+        }
+
+        .coolant {
+            height: 100px;
+            width: 100px;
+            border-right: 3px dashed black;
+            position: absolute;
+            left: 18px;
+            top: 300px;
+        }
+
+        .coolant::after {
+            content: "";
+            height: 100px;
+            width: 100px;
+            border-right: 3px dashed black;
+            position: absolute;
+            left: 272.5px;
+            top: 0px;
+        }
+
+        .power div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            font-family: poppins;
+            font-weight: 500;
+        }
+
+        .end {
+            height: 150px;
+            width: 2px;
+            background: black;
+            position: absolute;
+            left: 440px;
+            top: -17.5px;
+        }
+
+        .end::after {
+            content: "";
+            height: 27px;
+            width: 2px;
+            background: black;
+            position: absolute;
+            top: -3px;
+            left: -12px;
+            transform: rotate(62deg);
+        }
+
+        .end::before {
+            content: "";
+            height: 27px;
+            width: 2px;
+            background: black;
+            position: absolute;
+            top: 127px;
+            left: -12px;
+            transform: rotate(-62deg);
+        }
+
+        .inlet {
+            font-size: 18px;
+            font-family: poppins;
+            font-weight: 500;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+        }
+
+        .outlet {
+            font-size: 18px;
+            font-family: poppins;
+            font-weight: 500;
+            position: absolute;
+            top: 50px;
+            left: 400px;
+        }
+
+        .head {
+            position: absolute;
+            top: 480px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 36px;
+            font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .in {
+            font-size: 36px;
+            position: absolute;
+            top: 100px;
+            left: 88px;
+        }
+
+        .out {
+            font-size: 36px;
+            position: absolute;
+            top: 100px;
+            left: 364px;
+        }
+
+        .point {
+            font-size: 80px;
+            position: absolute;
+            left: 180px;
+            top: 90px;
+            transform: rotate(42deg);
+        }
+
+        .ft {
+            font-size: 18px;
+            font-family: poppins;
+            font-weight: 500;
+            position: absolute;
+            left: 20px;
+            top: 130px;
+        }
+
+        .laser {
+            font-size: 16px;
+            font-weight: 500;
+            font-family: poppins;
+            position: absolute;
+            left: 455px;
+            top: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tube">
+            <div class="rod"></div>
+            <div class="beam"></div>
+            <div class="connectors"></div>
+            <div class="rings"></div>
+            <div class="end"></div>
+            <div class="laser">Laser <br> Beam</div>
+        </div>
+        <div class="point">&curvearrowright;</div>
+        <div class="ft">Xenon Flash Tube</div>
+        <div class="power">
+            <div>Power Source</div>
+        </div>
+        <div class="coolant">
+            <div class="inlet">Water <br> Inlet</div>
+            <div class="in">&Uparrow;</div>
+            <div class="out">&Downarrow;</div>
+            <div class="outlet">Water <br> Outlet</div>
+        </div>
+        <div class="head">Ruby Laser</div>
+    </div>
+</body>
+
+</html>

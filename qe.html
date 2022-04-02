@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background: #0999ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: poppins, sans-serif;
+        }
+
+        .container {
+            height: 300px;
+            width: 300px;
+            background: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 2px 2px 5px black;
+        }
+
+        .title {
+            font-variant: small-caps;
+            font-weight: 600;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .input-box {
+            height: 120px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .input-box input {
+            width: 22%;
+            margin-top: 20px;
+            border: 2px solid black;
+            border-radius: 2px;
+            caret-color: #0999ff;
+            padding: 7px;
+            outline: none;
+        }
+
+        .btn {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            display: inline-block;
+        }
+
+        .btn input {
+            border: none;
+            background: #0999ff;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .res {
+            position: relative;
+            top: 10px;
+            font-weight: 500;
+            font-size: 16px;
+            text-align: center;
+            color: rgb(100, 201, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Quadratic Equation</div>
+        <form action="#">
+            <div class="input-box">
+                <input required id="num1" type="number" placeholder="a">
+                <span>x<sup>2</sup> +</span>
+                <input required id="num2" type="number" placeholder="b">
+                <span>x +</span>
+                <input required id="num3" type="number" placeholder="c">
+            </div>
+            <div class="btn">
+                <input type="submit" onclick="fun()" value="Submit">
+            </div>
+            <div class="res">
+                <span id="result"></span>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    function fun() {
+        var a = document.getElementById("num1").value;
+        var b = document.getElementById("num2").value;
+        var c = document.getElementById("num3").value;
+        var d = (b * b) - (4 * a * c);
+        var r1 = (-b + (d ** 0.5)) / (2 * a);
+        var r2 = (-b - (d ** 0.5)) / (2 * a);
+        if (d > 0) {
+            document.getElementById("result").innerHTML = "The roots are real and distinct and they are " + r1.toFixed(2) + " and " + r2.toFixed(2);
+        }
+        else if (d == 0) {
+            document.getElementById("result").innerHTML = "The roots are real and equal and they are " + r1.toFixed(2) + " and " + r2.toFixed(2);
+        }
+        else {
+            document.getElementById("result").innerHTML = "The roots are imaginary";
+        }
+    }
+</script>
+
+</html>

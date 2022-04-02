@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: rgb(0, 0, 175);
+            height: 100vh;
+        }
+
+        .container {
+            height: 500px;
+            width: 500px;
+            border: 2px solid transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            overflow: hidden;
+
+        }
+
+        .cup {
+            height: 220px;
+            width: 200px;
+            background: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-bottom-left-radius: 30%;
+            border-bottom-right-radius: 30%;
+            overflow: hidden;
+        }
+
+        .top {
+            height: 50px;
+            width: 200px;
+            border-radius: 50%;
+            background: rgb(209, 209, 209);
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 310px;
+            overflow: hidden;
+        }
+
+        .tea {
+            height: 40px;
+            width: 200.5px;
+            background: brown;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 310px;
+            overflow: hidden;
+        }
+
+        .tea-ripple {
+            height: 40px;
+            width: 180px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 140px;
+            margin: auto;
+            border-bottom: 5px solid chocolate;
+            border-radius: 50%;
+        }
+
+        .saucer {
+            height: 60px;
+            width: 290px;
+            background: rgb(236, 236, 236);
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 86px;
+            z-index: -1;
+        }
+
+        .shadow {
+            height: 30px;
+            width: 180px;
+            background: rgba(0, 0, 0, 0.2);
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 100px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(8px);
+        }
+
+        .handle {
+            height: 200px;
+            width: 140px;
+            position: absolute;
+            right: 126px;
+            top: 160px;
+            border-bottom: 20px solid rgb(240, 233, 233);
+            border-radius: 40%;
+            transform: rotate(-90deg);
+            z-index: -1;
+        }
+
+        .smoke {
+            height: 30px;
+            width: 220px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 100px;
+            filter: blur(26px);
+            animation: smoke 2s ease-in-out infinite;
+        }
+
+        @keyframes smoke {
+            25% {
+                top: 50px;
+            }
+
+            50% {
+                top: 20px;
+            }
+
+            75% {
+                top: -10px;
+            }
+
+            100% {
+                top: -40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cup"></div>
+        <div class="top"></div>
+        <div class="tea"></div>
+        <div class="tea-ripple"></div>
+        <div class="saucer"></div>
+        <div class="shadow"></div>
+        <div class="handle"></div>
+        <div class="smoke"></div>
+    </div>
+</body>
+
+</html>

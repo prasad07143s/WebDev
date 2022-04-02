@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" onclick="jump()">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #border {
+            width: 1100px;
+            height: 300px;
+            border: 2px solid black;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        span {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+            font-size: 18px;
+            position: absolute;
+            top: 20px;
+            left: 10px;
+        }
+
+
+        #text {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 36px;
+            font-weight: bold;
+            color: black;
+            letter-spacing: 4px;
+        }
+
+        a {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 5px 10px;
+            background: none;
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            border: 2px solid black;
+            font-family: 'Courier New', Courier, monospace;
+            display: none;
+        }
+
+        #character {
+            background: red;
+            height: 40px;
+            width: 40px;
+            position: relative;
+            top: 260px;
+            left: 20px;
+            border-radius: 100%;
+        }
+
+        .animate {
+            animation: character 500ms linear;
+            animation-delay: 0ms;
+        }
+
+        @keyframes character {
+            0% {
+                top: 260px;
+            }
+
+            25% {
+                top: 220px;
+            }
+
+            75% {
+                top: 220px;
+            }
+
+            100% {
+                top: 260px;
+            }
+        }
+
+        #obstacle {
+            background-color: blue;
+            height: 30px;
+            width: 20px;
+            position: relative;
+            top: 240px;
+            left: 1080px;
+            border-top-left-radius: 100%;
+            animation: obstacle 2s infinite linear;
+        }
+
+        @keyframes obstacle {
+            0% {
+                left: 1080px;
+            }
+
+            100% {
+                left: -40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="border">
+        <span id="distance"> Distance : </span>
+        <div id="text"></div>
+        <a id="refresh" href="C:\Users\meesa\Documents\HTML\JAVASCRIPT_DINO_GAME\dino_game.html">REFRESH</a>
+        <div id="character"></div>
+        <div id="obstacle"></div>
+    </div>
+</body>
+<script>
+    var character = document.getElementById("character");
+    var obstacle = document.getElementById("obstacle");
+    var i = 0;
+
+    var x = setInterval(function () {
+        i += 1;
+        document.getElementById("distance").innerHTML = "Distance : " + i + " m";
+    }, 100);
+    function jump() {
+        if (character.classList != "animate") {
+            character.classList.add("animate");
+        }
+        setTimeout(function () {
+            character.classList.remove("animate")
+        }, 500);
+    }
+    var dead = setInterval(function () {
+        var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+        var obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
+        if (obstacleLeft < 60 && obstacleLeft > 0 && characterTop >= 240) {
+            obstacle.style.animation = "none";
+            document.getElementById("text").innerHTML = "GAME OVER";
+            document.getElementById("refresh").style.display = "inline-block";
+            document.getElementById("distance").style.display = "none";
+        }
+    }, 10);
+</script>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background: #0099ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: poppins, sans-serif;
+        }
+
+        .container {
+            height: 400px;
+            width: 400px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px black;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            font-variant: small-caps;
+            text-align: center;
+        }
+
+        .details {
+            box-shadow: 2px 2px 5px black;
+            height: 130px;
+            padding: 30px 10px;
+            margin-top: 20px;
+        }
+
+        .input-box {
+            width: 24%;
+            line-height: 24px;
+            display: inline-block;
+            margin: 0 14px;
+        }
+
+        .input-box span {
+            font-size: 16px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 30px;
+            outline: none;
+            border: 2px solid black;
+            border-radius: 2px;
+            caret-color: #0099ff;
+            padding: 5px;
+        }
+
+        .submit {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .submit button {
+            outline: none;
+            border: none;
+            background: #0099ff;
+            color: white;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 18px;
+            font-weight: 500;
+            color: rgb(0, 190, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Age Calculator</div>
+        <form action="#">
+            <div class="details">
+                <div class="input-box">
+                    <span>Day</span>
+                    <input id="inp1" required type="number">
+                </div>
+                <div class="input-box">
+                    <span>Month</span>
+                    <input id="inp2" required type="number">
+                </div>
+                <div class="input-box">
+                    <span>Year</span>
+                    <input id="inp3" required type="number">
+                </div>
+            </div>
+            <div class="submit">
+                <button onclick="fun()">Submit</button>
+            </div>
+            <div id="result"></div>
+        </form>
+    </div>
+    <script>
+        function fun() {
+            var db = document.getElementById("inp1").value;
+            var mb = document.getElementById("inp2").value;
+            var yb = document.getElementById("inp3").value;
+            var day = 20, month = 2, year = 2022;
+            if ((db > 30) || (mb > 12) || (yb >= year)) {
+                document.getElementById("result").innerHTML = "Invlalid Date !";
+                document.getElementById("result").style.color = "red";
+            }
+            else {
+                if (yb < year) {
+                    if (month >= mb) {
+                        if (day >= db) {
+                            document.getElementById("result").innerHTML = (year - yb) + " Year(s) | " + (month - mb) + " Month(s) | " + (day - db) + " Day(s)";
+                        }
+                        else if (day < db) {
+                            document.getElementById("result").innerHTML = (year - yb) + " Year(s) | " + (month - mb - 1) + " Month(s) | " + (day + 30 - db) + " Day(s)";
+                        }
+                    }
+                    else if (month < mb) {
+                        if (day >= db) {
+                            document.getElementById("result").innerHTML = (year - yb - 1) + " Year(s) | " + (month + 12 - mb) + " Month(s) | " + (day - db) + " Day(s)";
+                        }
+                        else if (day < db) {
+                            document.getElementById("result").innerHTML = (year - yb - 1) + " Year(s) | " + (month - mb + 11) + " Month(s) | " + (day + 30 - db) + " Day(s)";
+                        }
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

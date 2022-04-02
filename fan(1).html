@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            height: 360px;
+            width: 360px;
+            border: 2px solid transparent;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        label {
+            height: 20px;
+            width: 20px;
+            background: black;
+            position: absolute;
+            top: 120px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border-radius: 50%;
+            animation: spin 0.4s infinite linear;
+            transform-origin: center;
+            animation-play-state: paused;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        label::after {
+            content: '';
+            height: 50px;
+            width: 50px;
+            background: blue;
+            border: none;
+            border-radius: 50%;
+            position: absolute;
+            left: -14.8px;
+            top: -14.8px;
+        }
+
+        span {
+            height: 110px;
+            width: 48px;
+            background: ;
+            position: absolute;
+            border-radius: 55% 45% 100% 0% / 28% 39% 72% 61%;
+            background: yellow;
+        }
+
+        span:nth-child(1) {
+            transform: rotate(120deg);
+            left: 22px;
+            top: 3px;
+            z-index: -1;
+        }
+
+        span:nth-child(2) {
+            transform: rotate(240deg);
+            top: -39px;
+            left: -73px;
+            z-index: -1;
+        }
+
+        span:nth-child(3) {
+            top: -100px;
+            left: 10px;
+            z-index: -1;
+        }
+
+        .base {
+            height: 160px;
+            width: 30px;
+            background: rgb(0, 0, 131);
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 130px;
+            z-index: -2;
+        }
+
+        .base::after {
+            content: '';
+            height: 36px;
+            width: 160px;
+            background: yellow;
+            position: absolute;
+            top: 160px;
+            left: -65px;
+            border-top-left-radius: 40%;
+            border-top-right-radius: 40%;
+        }
+
+        #na {
+            appearance: none;
+            height: 16px;
+            width: 13px;
+            background: red;
+            border-top-right-radius: 20%;
+            border-top-left-radius: 20%;
+            position: absolute;
+            bottom: 62px;
+            left: 130px;
+            z-index: -2;
+            outline: none;
+            cursor: pointer;
+        }
+
+        #na:checked {
+            height: 12px;
+        }
+
+        #na:checked+label {
+            animation-play-state: running;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="checkbox" id="na" name="na">
+        <label for="na">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="base"></div>
+    </div>
+</body>
+
+</html>

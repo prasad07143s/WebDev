@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            padding-top: 30px;
+            padding-left: 50px;
+        }
+
+        .container h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+        .container .options {
+            margin-top: 20px;
+            padding-top: 20px;
+            height: 80vh;
+            width: 424px;
+            margin-right: 110px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .container .options .opt {
+            height: 20vh;
+            position: relative;
+        }
+
+        .container .options .opt p {
+            font-family: "poppins", sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            border: 2px solid black;
+            padding: 14px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .container .options .opt p:hover {
+            border: 2px solid #0099ff;
+            color: #0099ff;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .container .options .opt span {
+            color: red;
+            position: absolute;
+            right: 20px;
+            top: -10px;
+            padding: 0 4px;
+            background: white;
+            font-family: "poppins", sans-serif;
+            font-size: 14px;
+            display: none;
+        }
+
+        .container .options .opt #span4 {
+            color: lawngreen;
+        }
+
+        .container #solution {
+            background: rgba(128, 255, 0, 0.5);
+            font-family: 'Poppins', sans-serif;
+            border-radius: 4px;
+            height: 122px;
+            width: 424px;
+            padding: 24px;
+            display: none;
+        }
+
+        .container #solution h4 {
+            font-weight: 500;
+            font-size: 27px;
+            padding-bottom: 10px;
+        }
+
+        @media (max-width: 500px) {}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>What is the capital of India ?</h3>
+        <div class="options">
+            <div class="opt opt1">
+                <p onclick="fun1()" id="mumbai">Mumbai</p>
+                <span class="s" id="span1">Wrong Answer</span>
+            </div>
+            <div class="opt opt2">
+                <p onclick="fun1()" id="chennai">Chennai</p>
+                <span class="s" id="span2">Wrong Answer</span>
+            </div>
+            <div class="opt opt3">
+                <p onclick="fun1()" id="kolkata">Kolkata</p>
+                <span class="s" id="span3">Wrong Answer</span>
+            </div>
+            <div class="opt opt4">
+                <p onclick="fun2()" id="delhi">New Delhi</p>
+                <span class="s" id="span4">Correct Answer</span>
+            </div>
+        </div>
+        <div id="solution">
+            <h4 id="result">Correct Answer !</h4>
+            <p>The Capital of India is New Delhi .</p>
+        </div>
+    </div>
+
+
+
+    <script>
+        function fun1() {
+            document.getElementById("mumbai").style.color = "red";
+            document.getElementById("mumbai").style.borderColor = "red";
+            document.getElementById("chennai").style.color = "red";
+            document.getElementById("chennai").style.borderColor = "red";
+            document.getElementById("kolkata").style.color = "red";
+            document.getElementById("kolkata").style.borderColor = "red";
+            document.getElementById("delhi").style.color = "lawngreen";
+            document.getElementById("delhi").style.borderColor = "lawngreen";
+            document.getElementById("span1").style.display = "block";
+            document.getElementById("span2").style.display = "block";
+            document.getElementById("span3").style.display = "block";
+            document.getElementById("span4").style.display = "block";
+            document.getElementById("solution").style.display = "inline-block";
+            document.getElementById("result").innerHTML = "Wrong Answer !";
+        }
+
+        function fun2() {
+            document.getElementById("delhi").style.color = "lawngreen";
+            document.getElementById("delhi").style.borderColor = "lawngreen";
+            document.getElementById("span4").style.display = "block";
+            document.getElementById("solution").style.display = "inline-block";
+        }
+    </script>
+</body>
+
+</html>

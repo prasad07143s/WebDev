@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0099ff;
+            font-family: poppins, sans-serif;
+        }
+
+        .container {
+            height: 400px;
+            width: 400px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px black;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 500;
+            font-variant: small-caps;
+            text-align: center;
+        }
+
+        .details {
+            box-shadow: 2px 2px 5px black;
+            height: 200px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .input-box {
+            width: 100%;
+            line-height: 35px;
+        }
+
+        .input-box span {
+            font-size: 16px;
+        }
+
+        .input-box input {
+            outline: none;
+            border: none;
+            width: 100%;
+        }
+
+        #res {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 22px;
+        }
+
+        #res1 {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">BMI Calculator</div>
+        <div class="details">
+            <div class="input-box">
+                <span>Weight in Kgs : </span>
+                <span id="w1">55</span>
+                <input min="1" onchange="fun()" id="weight" max="150" value="55" type="range">
+            </div>
+            <div class="input-box">
+                <span>Height in Cms : </span>
+                <span id="h1">182</span>
+                <input min="1" onchange="fun()" id="height" max="250" value="182" type="range">
+            </div>
+        </div>
+        <div id="res">BMI : 16.604</div>
+        <div id="res1" style="color: orange;">Underweight</div>
+    </div>
+    <script>
+        function fun() {
+            var m = document.getElementById("weight").value;
+            var h = document.getElementById("height").value;
+            var bmi = (m) / ((h * 0.01) ** 2);
+            document.getElementById("res").innerHTML = "BMI : " + bmi.toFixed(3);
+            document.getElementById("w1").innerHTML = m;
+            document.getElementById("h1").innerHTML = h;
+            if (bmi < 18) {
+                document.getElementById("res1").innerHTML = "Underweight";
+                document.getElementById("res1").style.color = "orange";
+            }
+            else if ((bmi >= 18) && (bmi <= 25)) {
+                document.getElementById("res1").innerHTML = "Normal";
+                document.getElementById("res1").style.color = "green";
+            }
+            else if (bmi > 25) {
+                document.getElementById("res1").innerHTML = "Overweight";
+                document.getElementById("res1").style.color = "red";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0%;
+            margin: 0%;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(#0099ff 50%, #150047 50%);
+        }
+
+        .clock {
+            height: 320px;
+            width: 320px;
+            border-radius: 50%;
+            background: #150047;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-sizing: content-box;
+            border: 15px solid rgb(0, 0, 255);
+            box-shadow: 0 0 10px black, inset 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .centre {
+            height: 20px;
+            width: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .hour {
+            height: 60px;
+            width: 10px;
+            background: white;
+            border-radius: 5px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 100px;
+            transform-origin: bottom;
+            animation: hour 4320s linear infinite;
+        }
+
+        @keyframes hour {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .minute {
+            height: 100px;
+            width: 5px;
+            background: rgb(255, 15, 15);
+            border-radius: 5px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 60px;
+            transform-origin: bottom;
+            animation: minute 360s linear infinite;
+        }
+
+        @keyframes minute {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .second {
+            height: 120px;
+            width: 4px;
+            background: #0099ff;
+            border-radius: 40%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 40px;
+            transform-origin: bottom;
+            animation: second 6s linear infinite;
+        }
+
+        @keyframes second {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="centre"></div>
+        <div id="hour" class="hour"></div>
+        <div id="minute" class="minute"></div>
+        <div id="second" class="second"></div>
+    </div>
+</body>
+<script>
+    var hour = document.getElementById("hour");
+    var minute = document.getElementById("minute");
+    var second = document.getElementById("second");
+
+    var x = setInterval(() => {
+        var date_now = new Date();
+
+        var hr = date_now.getHours();
+        var min = date_now.getMinutes();
+        var sec = date_now.getSeconds();
+
+        var hour_rotation = (hr * 30) + (min / 2);
+        var minute_rotation = (min * 6) + (sec / 10);
+        var second_rotation = sec * 6;
+
+        hour.style.transform = 'rotate(${hour_rotation}deg)';
+        minute.style.transform = 'rotate(${minute_rotation}deg)';
+        second.style.transform = 'rotate(${second_rotation}deg)';
+
+        console.log(hr, min, sec);
+
+    }, 1000);
+</script>
+
+</html>
