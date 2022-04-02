@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        * {
+            padding: 0%;
+            margin: 0%;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(45deg, #0099ff, aqua);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .login-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 5px;
+            width: 400px;
+        }
+
+        .login-container h3 {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid black;
+            font-size: 24px;
+        }
+
+        .login-container .login-form {
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+
+        .login-container .login-form .login-input-box {
+            border-bottom: 1px solid black;
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .login-container .login-form .login-input-box input {
+            width: 100%;
+            height: 40px;
+            background: none;
+            border: none;
+            outline: none;
+            caret-color: #0099ff;
+            font-size: 16px;
+            padding: 0 5px;
+        }
+
+        .login-container .login-form .login-input-box span::before {
+            content: '';
+            height: 2px;
+            width: 0%;
+            position: absolute;
+            top: 40px;
+            background: #0099ff;
+            transition-duration: 0.5s;
+        }
+
+        .login-container .login-form .login-input-box label {
+            font-size: 16px;
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            pointer-events: none;
+            transform: translateY(-50%);
+            color: rgb(124, 124, 124);
+            transition: 0.5s;
+        }
+
+        .login-container .login-form .login-input-box input:focus~span::before,
+        .login-container .login-form .login-input-box input:valid~span::before {
+            width: 100%;
+        }
+
+        .login-container .login-form .login-input-box input:focus~label,
+        .login-container .login-form .login-input-box input:valid~label {
+            top: -5px;
+            color: #0099ff;
+            font-size: 14px;
+        }
+
+        .login-container .login-form .forgot-password {
+            font-size: 12px;
+        }
+
+        .login-container .login-form .forgot-password a {
+            text-decoration: none;
+            color: #0099ff;
+        }
+
+        .login-container .login-form .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .login-container .login-form .input-submit-button {
+            margin-top: 20px;
+        }
+
+        .login-container .login-form .input-submit-button .submit {
+            width: 100%;
+            height: 40px;
+            border-radius: 500px;
+            background: transparent;
+            border: 2px solid #0099ff;
+            outline: none;
+            background: #0099ff;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition-duration: 0.3s;
+        }
+
+        .login-container .login-form .input-submit-button .submit:hover {
+            background: #006eb8;
+            border-color: #006eb8;
+        }
+
+        .login-container .login-form .sign-in-option {
+            margin: 20px 0;
+        }
+
+        .login-container .login-form .sign-in-option span {
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .login-container .login-form .sign-in-option a {
+            text-decoration: none;
+            color: #0099ff;
+            margin-left: 5px;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .login-container .login-form .sign-in-option a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h3>Register</h3>
+        <form class="login-form">
+            <div class="login-input-box">
+                <input style="text-transform: capitalize;" type="text" required="required">
+                <span></span>
+                <label>Name</label>
+            </div>
+            <div class="login-input-box">
+                <input type="email" required="required">
+                <span></span>
+                <label>Email</label>
+            </div>
+            <div class="login-input-box">
+                <input type="password" required="required">
+                <span></span>
+                <label>Choose a Password</label>
+            </div>
+            <div class="login-input-box">
+                <input type="password" required="required">
+                <span></span>
+                <label>Re-enter Your Password</label>
+            </div>
+            <div class="input-submit-button">
+                <input onsubmit="reg()" type="submit" value="Sign Up" class="submit">
+            </div>
+            <div>
+                <p style="margin: 10px auto; color: lime; text-align: center; font-size: 13px;" id="reg"></p>
+            </div>
+            <div class="sign-in-option">
+                <span>Have an Account ? </span>
+                <a href="Login.html">Login</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function reg() {
+            document.getElementById("reg").innerHTML = "We have sent you an Email, Kindly check your inbox ! "
+        }
+    </script>
+</body>
+
+</html>
